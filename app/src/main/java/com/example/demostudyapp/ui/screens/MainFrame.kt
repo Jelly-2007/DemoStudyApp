@@ -2,6 +2,7 @@ package com.example.demostudyapp.ui.screens
 
 import android.R.attr.icon
 import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material.icons.Icons
@@ -21,6 +22,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import com.example.demostudyapp.ui.components.TopAppBar
 import com.example.demostudyapp.ui.model.entity.NavigationItem
 
 @Composable
@@ -37,6 +39,14 @@ fun MainFrame(){
     }
 
     Scaffold(
+        topBar = {
+            if (currentNavigationIndex == 0) {
+                TopAppBar { Text(text = "学习页") }
+            }
+            if (currentNavigationIndex == 2){
+                TopAppBar { Text(text = "我的页面") }
+            }
+        },
         bottomBar = {
             NavigationBar(
                 modifier = Modifier.background(
@@ -72,10 +82,15 @@ fun MainFrame(){
             }
         }
     ) { innerPadding ->
-        Text(
-            text = "current navigation item: $currentNavigationIndex",
+        Column(
             modifier = Modifier.padding(innerPadding)
-        )
+        ) {
+            when(currentNavigationIndex){
+                0->StudyScreen()
+                1->TaskScreen()
+                2->MineScreen()
+            }
+        }
     }
 }
 
