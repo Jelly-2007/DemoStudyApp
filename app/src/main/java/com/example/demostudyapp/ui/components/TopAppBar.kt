@@ -29,7 +29,7 @@ fun TopAppBar(
     val appBarHeight = 56.dp
 
     Row(
-        modifier = modifier
+        modifier = Modifier
             .background(
                 Brush.linearGradient(
                     colors = listOf(
@@ -40,7 +40,8 @@ fun TopAppBar(
             )
             .statusBarsPadding() // 标题避开状态栏，背景铺到状态栏后面
             .fillMaxWidth()
-            .height(appBarHeight),
+            .height(appBarHeight)
+            .then(modifier),
         horizontalArrangement = Arrangement.Center,
         verticalAlignment = Alignment.CenterVertically
     ) {

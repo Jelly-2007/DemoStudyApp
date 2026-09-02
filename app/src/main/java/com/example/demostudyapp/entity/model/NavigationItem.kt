@@ -1,4 +1,4 @@
-package com.example.demostudyapp.ui.model.entity
+package com.example.demostudyapp.entity.model
 
 import androidx.compose.ui.graphics.vector.ImageVector
 

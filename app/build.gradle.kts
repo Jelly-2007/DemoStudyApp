@@ -66,4 +66,6 @@ dependencies {
     implementation("androidx.compose.material3:material3:1.4.0")
     //【可选】导航控制器，页面跳转用 NavHost/navController
     implementation("androidx.navigation:navigation-compose:2.8.0")
+
+    implementation(libs.androidx.lifecycle.viewmodel.compose)
 }
