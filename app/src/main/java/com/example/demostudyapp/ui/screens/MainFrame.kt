@@ -23,7 +23,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import com.example.demostudyapp.entity.model.NavigationItem
+import com.example.demostudyapp.model.entity.NavigationItem
 
 @Composable
 fun MainFrame(){

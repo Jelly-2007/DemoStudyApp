@@ -4,12 +4,12 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Description
 import androidx.compose.material.icons.filled.SmartDisplay
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
-import com.example.demostudyapp.entity.model.Category
-import com.example.demostudyapp.entity.model.DataType
+import com.example.demostudyapp.model.entity.Category
+import com.example.demostudyapp.model.entity.DataType
+import com.example.demostudyapp.model.entity.SwiperEntity
 import kotlin.collections.listOf
 
 class MainViewModel: ViewModel() {
@@ -58,4 +58,13 @@ class MainViewModel: ViewModel() {
     fun updateTypeIndex(index: Int){
         currentTypeIndex = index
     }
+
+    //轮播图数据
+    val swiperData = listOf(
+        SwiperEntity("https://picsum.photos/id/1015/800/300"),
+        SwiperEntity("https://picsum.photos/id/1016/800/300"),
+        SwiperEntity("https://picsum.photos/id/1018/800/300"),
+        SwiperEntity("https://picsum.photos/id/1020/800/300"),
+        SwiperEntity("https://picsum.photos/id/1024/800/300"),
+    )
 }

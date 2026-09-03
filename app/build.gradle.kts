@@ -68,4 +68,8 @@ dependencies {
     implementation("androidx.navigation:navigation-compose:2.8.0")
 
     implementation(libs.androidx.lifecycle.viewmodel.compose)
+
+    implementation(libs.androidx.compose.foundation)
+
+    implementation(libs.coil.compose)
 }

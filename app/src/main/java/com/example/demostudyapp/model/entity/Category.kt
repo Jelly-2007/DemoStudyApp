@@ -1,4 +1,4 @@
-package com.example.demostudyapp.entity.model
+package com.example.demostudyapp.model.entity
 
 /**
  * 分类
