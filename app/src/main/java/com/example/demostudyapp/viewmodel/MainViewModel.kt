@@ -67,4 +67,11 @@ class MainViewModel: ViewModel() {
         SwiperEntity("https://picsum.photos/id/1020/800/300"),
         SwiperEntity("https://picsum.photos/id/1024/800/300"),
     )
+
+    //通知数据
+    val notifications = listOf(
+        "人社部向疫情防控期",
+        "湖北黄冈新冠肺炎患者治愈病例破千",
+        "安徽单日新增确诊病例首次降至个位数"
+    )
 }

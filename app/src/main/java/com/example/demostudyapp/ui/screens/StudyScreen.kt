@@ -38,6 +38,7 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import coil.compose.AsyncImage
 import com.example.compose.backgroundDark
+import com.example.demostudyapp.ui.components.NotificationContent
 import com.example.demostudyapp.ui.components.SwiperContent
 import com.example.demostudyapp.ui.components.TopAppBar
 import com.example.demostudyapp.viewmodel.MainViewModel
@@ -171,6 +172,9 @@ fun StudyScreen(
         }
         //轮播图
         SwiperContent(vm)
+
+        //通知公告
+        NotificationContent(vm)
 
     }
 }

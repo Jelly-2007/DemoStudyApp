@@ -39,7 +39,6 @@ fun SwiperContent(
     )
 
     val coroutineScope = rememberCoroutineScope()
-
     DisposableEffect(Unit) {
         val timer = Timer()
 
@@ -60,6 +59,7 @@ fun SwiperContent(
         }
 
     }
+
 
     HorizontalPager(
         state = pagerState,
