@@ -1,6 +1,5 @@
 package com.example.demostudyapp.ui.screens
 
-import android.R.attr.category
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -12,6 +11,8 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.pager.HorizontalPager
 import androidx.compose.foundation.pager.rememberPagerState
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -38,14 +39,17 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import coil.compose.AsyncImage
 import com.example.compose.backgroundDark
+import com.example.demostudyapp.ui.components.ArticleItem
 import com.example.demostudyapp.ui.components.NotificationContent
 import com.example.demostudyapp.ui.components.SwiperContent
 import com.example.demostudyapp.ui.components.TopAppBar
+import com.example.demostudyapp.viewmodel.ArticleViewModel
 import com.example.demostudyapp.viewmodel.MainViewModel
 
 @Composable
 fun StudyScreen(
-    vm: MainViewModel= viewModel()
+    vm: MainViewModel= viewModel(),
+    articleViewModel: ArticleViewModel = viewModel()
 ) {
     Column(
         modifier = Modifier
@@ -170,11 +174,21 @@ fun StudyScreen(
 
             }
         }
-        //轮播图
-        SwiperContent(vm)
 
-        //通知公告
-        NotificationContent(vm)
+        LazyColumn() {
+            //轮播图
+            item { SwiperContent(vm) }
+
+            //通知公告
+            item { NotificationContent(vm) }
+
+            //刷新列表
+            items(articleViewModel.list){article->
+                ArticleItem(article)
+            }
+
+        }
+
 
     }
 }
