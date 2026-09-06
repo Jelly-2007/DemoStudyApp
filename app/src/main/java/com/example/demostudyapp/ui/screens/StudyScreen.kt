@@ -43,13 +43,16 @@ import com.example.demostudyapp.ui.components.ArticleItem
 import com.example.demostudyapp.ui.components.NotificationContent
 import com.example.demostudyapp.ui.components.SwiperContent
 import com.example.demostudyapp.ui.components.TopAppBar
+import com.example.demostudyapp.ui.components.VideoItem
 import com.example.demostudyapp.viewmodel.ArticleViewModel
 import com.example.demostudyapp.viewmodel.MainViewModel
+import com.example.demostudyapp.viewmodel.VideoViewModel
 
 @Composable
 fun StudyScreen(
     vm: MainViewModel= viewModel(),
-    articleViewModel: ArticleViewModel = viewModel()
+    articleViewModel: ArticleViewModel = viewModel(),
+    videoViewModel: VideoViewModel =viewModel()
 ) {
     Column(
         modifier = Modifier
@@ -182,10 +185,22 @@ fun StudyScreen(
             //通知公告
             item { NotificationContent(vm) }
 
-            //刷新列表
-            items(articleViewModel.list){article->
-                ArticleItem(article)
+
+            if (vm.showArticleList){
+                //新闻列表
+                items(articleViewModel.list){article->
+                    ArticleItem(article)
+                }
+            }else{
+                //视频列表
+                items(videoViewModel.list){videoEntity->
+                    VideoItem(videoEntity)
+                }
             }
+
+
+
+
 
         }
 

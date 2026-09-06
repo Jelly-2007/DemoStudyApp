@@ -72,4 +72,6 @@ dependencies {
     implementation(libs.androidx.compose.foundation)
 
     implementation(libs.coil.compose)
+
+    implementation("androidx.constraintlayout:constraintlayout-compose:1.1.1")
 }
