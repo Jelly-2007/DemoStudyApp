@@ -73,7 +73,7 @@ fun NotificationContent(vm: MainViewModel){
 
     Row(
         modifier = Modifier
-            .padding(8.dp)
+            .padding(horizontal = 16.dp, vertical = 8.dp)
             .clip(RoundedCornerShape(8.dp))
             .background(
             MaterialTheme.colorScheme.surfaceContainerHigh

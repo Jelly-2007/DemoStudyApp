@@ -14,7 +14,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.unit.dp
 
-
 /**
  * 统一标题栏
  * @param modifier
@@ -26,7 +25,7 @@ fun TopAppBar(
     content: @Composable RowScope.() -> Unit
 ) {
     // 标题栏内容高度
-    val appBarHeight = 56.dp
+    val appBarHeight = 64.dp
 
     Row(
         modifier = Modifier
@@ -38,7 +37,7 @@ fun TopAppBar(
                     )
                 )
             )
-            .statusBarsPadding() // 标题避开状态栏，背景铺到状态栏后面
+            .statusBarsPadding()
             .fillMaxWidth()
             .height(appBarHeight)
             .then(modifier),

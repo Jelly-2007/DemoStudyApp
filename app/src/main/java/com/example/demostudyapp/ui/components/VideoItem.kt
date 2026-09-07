@@ -4,7 +4,7 @@ import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material3.Divider
+import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -112,7 +112,7 @@ fun VideoItem(
                 .layoutId("duration")
         )
 
-        Divider(
+        HorizontalDivider(
             modifier = Modifier
                 .layoutId("divider")
                 .padding(top = 8.dp)

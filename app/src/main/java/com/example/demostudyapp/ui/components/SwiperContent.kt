@@ -64,7 +64,7 @@ fun SwiperContent(
     HorizontalPager(
         state = pagerState,
         modifier = Modifier
-            .padding(horizontal = 8.dp)
+            .padding(horizontal = 16.dp)
             .clip(RoundedCornerShape(8.dp))
     ) { index ->
         val actualIndex =
