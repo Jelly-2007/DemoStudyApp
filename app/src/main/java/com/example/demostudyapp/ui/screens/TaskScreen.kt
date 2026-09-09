@@ -8,12 +8,14 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Brush
@@ -26,6 +28,7 @@ import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
+import com.example.demostudyapp.ui.components.CircleRing
 import com.example.demostudyapp.viewmodel.TaskViewModel
 
 @Composable
@@ -40,6 +43,11 @@ fun TaskScreen(
     var boxWidthDp: Int
     with(LocalConfiguration.current){
         boxWidthDp = screenWidthDp / 2
+    }
+
+    //当学年积分改变时，更新学年积分百分比
+    LaunchedEffect(taskVM.pointOfYear) {
+        taskVM.updatePointPercent()
     }
 
 
@@ -96,16 +104,20 @@ fun TaskScreen(
                     contentAlignment = Alignment.Center,
                     modifier = Modifier
                         .height(boxWidthDp.dp)
+                        .padding(top = 8.dp)
                 ){
                     //圆环
-
+                    CircleRing(
+                        boxWidthDp,
+                        taskVM
+                    )
                     //进度数据
                     Column(
                         horizontalAlignment = Alignment.CenterHorizontally
                     ) {
                         Text(
                             buildAnnotatedString {
-                                append(taskVM.pointOfYear)
+                                append(taskVM.pointOfYear.toString())
                                 withStyle(
                                     SpanStyle(
                                         fontSize = MaterialTheme.typography.labelSmall.fontSize
@@ -123,6 +135,44 @@ fun TaskScreen(
                             text = "学年积分",
                             style = MaterialTheme.typography.bodyMedium,
                             color = MaterialTheme.colorScheme.onSurface
+                        )
+                    }
+                }
+            }
+
+            item {
+                Row(
+                    horizontalArrangement = Arrangement.SpaceEvenly,
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .offset(y = (-30).dp)
+                ) {
+                    Column(
+                        horizontalAlignment = Alignment.CenterHorizontally
+                    ) {
+                        Text(
+                            text = "${taskVM.totalPointOfYear}分",
+                            color = MaterialTheme.colorScheme.onSurface,
+                            style = MaterialTheme.typography.bodyLarge
+                        )
+                        Text(
+                            text = "学年规定积分",
+                            color = MaterialTheme.colorScheme.onSurface,
+                            style = MaterialTheme.typography.labelMedium
+                        )
+                    }
+                    Column(
+                        horizontalAlignment = Alignment.CenterHorizontally
+                    ) {
+                        Text(
+                            text = "${taskVM.totalPointOfYear - taskVM.pointOfYear}分",
+                            color = MaterialTheme.colorScheme.onSurface,
+                            style = MaterialTheme.typography.bodyLarge
+                        )
+                        Text(
+                            text = "还差",
+                            color = MaterialTheme.colorScheme.onSurface,
+                            style = MaterialTheme.typography.labelMedium
                         )
                     }
                 }
