@@ -56,6 +56,9 @@ dependencies {
     debugImplementation(libs.androidx.compose.ui.test.manifest)
     debugImplementation(libs.androidx.compose.ui.tooling)
 
+    // XML 主题 Theme.Material3.* 依赖的 Views 版 Material 库（themes.xml 里的父主题和 colorPrimary* 属性来自这里）
+    implementation("com.google.android.material:material:1.12.0")
+
     // 基础material3
     implementation("androidx.compose.material3:material3")
     // 基础material图标（常用）

@@ -30,5 +30,21 @@ class TaskViewModel: ViewModel() {
         pointOfYearPercent = 220f * pointOfYear / totalPointOfYear
     }
 
+    //一周积分情况
+    var pointOfWeek by mutableStateOf(listOf(
+        0.0, 2.0, 6.0, 8.0, 4.0, 14.0, 7.0
+    ))
+        private set
+
+
+    val weeks = listOf(
+        "02.05",
+        "02.06",
+        "02.07",
+        "02.08",
+        "02.09",
+        "02.10",
+        "今日"
+    )
 
 }

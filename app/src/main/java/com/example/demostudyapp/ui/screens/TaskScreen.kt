@@ -12,13 +12,16 @@ import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Brush
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.text.SpanStyle
@@ -28,6 +31,7 @@ import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
+import com.example.demostudyapp.ui.components.ChartView
 import com.example.demostudyapp.ui.components.CircleRing
 import com.example.demostudyapp.viewmodel.TaskViewModel
 
@@ -174,6 +178,47 @@ fun TaskScreen(
                             color = MaterialTheme.colorScheme.onSurface,
                             style = MaterialTheme.typography.labelMedium
                         )
+                    }
+                }
+            }
+
+            //学习明细
+            item{
+                Column(
+                    modifier = Modifier
+                        .clip(RoundedCornerShape(topStart = 16.dp, topEnd = 16.dp))
+                        .background(Color.White)
+                        .fillMaxWidth()
+                        .padding(top = 8.dp)
+                        .padding(horizontal = 8.dp, vertical = 8.dp)
+
+                ) {
+                    Text(
+                        text = "学习明细",
+                        style = MaterialTheme.typography.titleMedium,
+                        color = MaterialTheme.colorScheme.onSurface
+                    )
+                    Text(
+                        text = "最近一周获得积分情况",
+                        style = MaterialTheme.typography.titleSmall,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant
+                    )
+
+                    //积分情况的折线图
+                    ChartView(
+                        points = taskVM.pointOfWeek,
+                        modifier = Modifier.padding(vertical = 8.dp)
+                    )
+                    Row() {
+                        taskVM.weeks.forEach {
+                            Text(
+                                text = it,
+                                style = MaterialTheme.typography.labelSmall,
+                                textAlign = TextAlign.Center,
+                                modifier = Modifier
+                                    .weight(1f)
+                            )
+                        }
                     }
                 }
             }
