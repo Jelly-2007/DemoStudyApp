@@ -47,4 +47,25 @@ class TaskViewModel: ViewModel() {
         "今日"
     )
 
+    //今日积分
+    private var todayPoint = 0
+
+    //今日提醒文字
+    var tips by mutableStateOf("今日获得0积分，快去完成下面的任务吧")
+        private set
+
+    fun updateTips(){
+        tips = when (todayPoint) {
+            0 -> {
+                "今日获得0积分，快去完成下面的任务吧"
+            }
+            in 0..14 -> {
+                "今日获得${todayPoint}积分，快去完成下面的任务吧"
+            }
+            else -> {
+                "今日获得${todayPoint}积分，已经完成任务"
+            }
+        }
+    }
+
 }

@@ -33,6 +33,7 @@ import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.demostudyapp.ui.components.ChartView
 import com.example.demostudyapp.ui.components.CircleRing
+import com.example.demostudyapp.ui.components.DailyTaskContent
 import com.example.demostudyapp.viewmodel.TaskViewModel
 
 @Composable
@@ -209,6 +210,8 @@ fun TaskScreen(
                         points = taskVM.pointOfWeek,
                         modifier = Modifier.padding(vertical = 8.dp)
                     )
+
+                    //日期
                     Row() {
                         taskVM.weeks.forEach {
                             Text(
@@ -220,8 +223,30 @@ fun TaskScreen(
                             )
                         }
                     }
+
+                    //今日任务提醒
+                    Text(
+                        text = taskVM.tips,
+                        style = MaterialTheme.typography.bodyMedium,
+                        color = MaterialTheme.colorScheme.primary,
+                        modifier = Modifier
+                            .padding(8.dp)
+                            .clip(RoundedCornerShape(4.dp))
+                            .background(
+                            color = MaterialTheme.colorScheme.surfaceContainerHigh
+                        )
+                            .padding(8.dp)
+                            .fillMaxWidth()
+                    )
+
+                    DailyTaskContent()
                 }
             }
+
+
+
+
+
         }
     }
 }
